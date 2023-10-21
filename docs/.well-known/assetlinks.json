@@ -7,7 +7,18 @@
             "namespace": "android_app",
             "package_name": "com.github.reformatus.enekeskonyv",
             "sha256_cert_fingerprints": [
-                "53:61:B8:F2:63:B8:1B:29:13:8E:36:F2:1D:D4:93:2F:AE:5A:98:D7:92:52:93:9A:A7:D9:82:D8:26:BF:F8:4F",
+                "53:61:B8:F2:63:B8:1B:29:13:8E:36:F2:1D:D4:93:2F:AE:5A:98:D7:92:52:93:9A:A7:D9:82:D8:26:BF:F8:4F"
+            ]
+        }
+    },
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "com.github.reformatus.enekeskonyv",
+            "sha256_cert_fingerprints": [
                 "DB:F8:27:1F:4D:E8:18:CE:1F:DB:B1:20:A9:66:DD:D8:33:B2:D6:5D:69:C9:1C:51:F7:8A:01:F0:1A:6E:15:73"
             ]
         }
