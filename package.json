@@ -1,0 +1,29 @@
+{
+  "name": "my-tailwind-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build-css": "postcss src/styles/tailwind.css -o docs/styles.css",
+    "watch-css": "postcss src/styles/tailwind.css -o docs/styles.css --watch",
+    "serve": "live-server docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/my-tailwind-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yourusername/my-tailwind-project/issues"
+  },
+  "homepage": "https://yourusername.github.io/my-tailwind-project/",
+  "devDependencies": {
+    "autoprefixer": "^10.2.5",
+    "live-server": "^1.2.1",
+    "postcss": "^8.2.8",
+    "postcss-cli": "^8.3.1",
+    "tailwindcss": "^2.2.19"
+  }
+}

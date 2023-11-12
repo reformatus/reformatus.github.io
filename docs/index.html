@@ -1,25 +1,104 @@
 <!DOCTYPE html>
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Református Énekeskönyv</title>
-  <html lang="hu" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Tailwind CSS Project</title>
+    <link href="styles.css" rel="stylesheet">
 </head>
 
-<body>
-  <h1>Református Énekeskönyv (21/48)</h1>
-  <p>
-    Átirányítást szolgáló oldal.
-  </p>
-  <p>
-    <i>Fejlesztés alatt...</i>
-  </p>
-  <script>
-    if (!window.MSStream && /iPad|iPhone|iPod/.test(navigator.userAgent)) {
-      window.location.replace("https://apps.apple.com/app/reform%C3%A1tus-%C3%A9nekesk%C3%B6nyv-21-48/id1661694803");
-    }
-    else if (/android/i.test(navigator.userAgent)) {
-      window.location.replace("https://play.google.com/store/apps/details?id=com.github.reformatus.enekeskonyv");
-    }
-  </script>
+<body class="bg-gray-900 flex flex-col items-center pt-6 lg:pt-16">
+    <div class="w-full max-w-lg p-6 bg-gray-800 flex flex-col items-stretch rounded-lg">
+        <div class="flex items-center mb-4">
+            <img src="app_icon.png" alt="App Logo" class="w-20 h-20 mr-4">
+            <h1 class="text-2xl font-bold text-white">Református Énekeskönyv (21/48)</h1>
+        </div>
+        <div class="border-l-2 border-gray-600 pl-4 mb-6">
+            <p class="text-gray-400 text-sm">
+                <i>„Ott van öröm s örök pálma, Hol sok ezren az égben, :/: Isten trónja előtt állva Tündöklő
+                    fényességben,
+                    A dicső szent angyalokkal, Minden megboldogultakkal A Jézust magasztalják, Megtartójuknak vallják.”
+                </i>
+                <br />
+                <a href="https://reflabs.hu/?s=48.405.3">(48-as református
+                    énekeskönyv, 405. dicséret 4. vers)</a>
+            </p>
+        </div>
+        <div id="song-link" style="display: none;">
+            <h3 class="text-xl text-center pb-3">🔗 Egy éneklinket nyitottál meg:</h3>
+            <p class="text-center">Könyv: <span id="book">**</span> / Ének: <span id="song">**</span> / Vers: <span
+                    id="verse">**</span></p>
+            <hr />
+        </div>
+        <div id="cue-link" style="display: none;">
+            <h3 class="text-xl text-center pb-3">🔗 Egy listalinket nyitottál meg:</h3>
+            <h4 class="text-l text-center pb-3">„<span>Kedvencek</span>”</h4>
+            <span id="list-to-replace"></span>
+            <hr />
+        </div>
+        <h3 class="text-xl self-center pb-3">Az alkalmazás letölthető:</h3>
+        <p id="redirect-indicator" style="display: none;" class="mb-3 text-center text-green-300 animate-pulse">
+            Átirányítás az áruházba...</p>
+        <div class="flex space-x-4 object-fill" style="justify-content: center;">
+            <a href='https://play.google.com/store/apps/details?id=com.github.reformatus.enekeskonyv'>
+                <img class='h-12' alt='Szerezd meg: Google Play' src='assets/play_button.png' />
+            </a>
+            <a href="https://apps.apple.com/us/app/reform%C3%A1tus-%C3%A9nekesk%C3%B6nyv-21-48/id1661694803">
+                <img class="h-12" src="assets/appstore_button.png" alt="Download on the App Store">
+            </a>
+        </div>
+        <p class="pt-3 text-center text-gray-400">Csatlakozás a béta-programhoz: <a href="https://play.google.com/apps/testing/com.github.reformatus.enekeskonyv">Android</a>, <a
+                href="https://testflight.apple.com/join/a0TZklZp">iOS</a></p>
+        <hr />
+        <p class="text-gray-400">©️ RefLabs 2022-2023 | <a href="mailto:app@reflabs.hu">app@reflabs.hu</a> | <a href="https://github.com/reformatus/enekeskonyv-app">Forráskód</a></p>
+    </div>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const songLink = urlParams.get('s');
+        if (songLink) {
+            document.getElementById('song-link').style.display = 'block';
+            const [book, song, verse] = songLink.split('.');
+            document.getElementById('book').innerText = book;
+            document.getElementById('song').innerText = song;
+            document.getElementById('verse').innerText = parseInt(verse) + 1;
+
+            tryRedirectToStore();
+        }
+
+        const cueLink = urlParams.get('c');
+        if (cueLink) {
+            document.getElementById('cue-link').style.display = 'block';
+            const [listName, ...songs] = cueLink.split(',');
+            document.getElementById('list-to-replace').innerText = listName;
+
+            const list = document.createElement('ul');
+            songs.forEach(song => {
+                const [book, songNumber, verse] = song.split('.');
+                const li = document.createElement('li');
+                li.innerText = `Könyv: ${book} / Ének: ${songNumber} / Vers: ${parseInt(verse) + 1}`;
+                list.appendChild(li);
+            });
+            document.getElementById('list-to-replace').replaceWith(list);
+
+            tryRedirectToStore();
+        }
+
+        function tryRedirectToStore() {
+            if (!window.MSStream && /iPad|iPhone|iPod/.test(navigator.userAgent)) {
+                document.getElementById('redirect-indicator').style.display = 'block';
+                setTimeout(() => {
+                    window.location.replace("https://apps.apple.com/app/reform%C3%A1tus-%C3%A9nekesk%C3%B6nyv-21-48/id1661694803");
+                }, 3000);
+            }
+            else if (/android/i.test(navigator.userAgent)) {
+                document.getElementById('redirect-indicator').style.display = 'block';
+                setTimeout(() => {
+                    window.location.replace("https://play.google.com/store/apps/details?id=com.github.reformatus.enekeskonyv");
+                }, 3000);
+            }
+        }
+    </script>
 </body>
+
+</html>
