@@ -96,9 +96,8 @@
         function tryRedirect() {
             if (!window.MSStream && /iPad|iPhone|iPod/.test(navigator.userAgent)) {
                 if (!urlParams.get('toStore')) {
-                    let location = window.location;
-                    location.host = "l." + location.host;
-                    window.location.replace(location + "&toStore=1");
+                    const newLocation = "https://fodor.pro/l/reflabs" + window.location.search;
+                    window.location.replace(newLocation + "&toStore=1");
                 } else {
                     document.getElementById('redirect-indicator').style.display = 'block';
                     setTimeout(() => {
@@ -108,9 +107,8 @@
             }
             else if (/android/i.test(navigator.userAgent)) {
                 if (!urlParams.get('toStore')) {
-                    let location = window.location;
-                    location.host = "l." + location.host;
-                    window.location.replace(location + "&toStore=1");
+                    const newLocation = "https://fodor.pro/l/reflabs" + window.location.search;
+                    window.location.replace(newLocation + "&toStore=1");
                 } else {
                     document.getElementById('redirect-indicator').style.display = 'block';
                     setTimeout(() => {
