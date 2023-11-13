@@ -96,7 +96,7 @@
         function tryRedirect() {
             if (!window.MSStream && /iPad|iPhone|iPod/.test(navigator.userAgent)) {
                 if (!urlParams.get('toStore')) {
-                    window.location.replace(window.location.toString + "&toStore=1");
+                    window.location.replace(window.location + "&toStore=1");
                 } else {
                     document.getElementById('redirect-indicator').style.display = 'block';
                     setTimeout(() => {
@@ -106,7 +106,7 @@
             }
             else if (/android/i.test(navigator.userAgent)) {
                 if (!urlParams.get('toStore')) {
-                    window.location.replace(window.location.toString + "&toStore=1");
+                    window.location.replace(window.location + "&toStore=1");
                 } else {
                     document.getElementById('redirect-indicator').style.display = 'block';
                     setTimeout(() => {
