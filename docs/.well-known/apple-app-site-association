@@ -5,7 +5,7 @@
           "appIDs": ["MYUTW2GF6J.com.github.reformatus.enekeskonyv"],
           "components": [
             {
-              "/": "/",
+              "/": "*",
               "comment": "Matches any URL with the base path /."
             }
           ]
