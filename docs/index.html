@@ -96,21 +96,21 @@
         function tryRedirect() {
             if (!window.MSStream && /iPad|iPhone|iPod/.test(navigator.userAgent)) {
                 if (!urlParams.get('toStore')) {
-                    window.location.replace(window.location + "&toStore=1");
+                    window.open(window.location + "&toStore=1");
                 } else {
                     document.getElementById('redirect-indicator').style.display = 'block';
                     setTimeout(() => {
-                        window.location.replace("https://apps.apple.com/app/reform%C3%A1tus-%C3%A9nekesk%C3%B6nyv-21-48/id1661694803");
+                        window.open("https://apps.apple.com/app/reform%C3%A1tus-%C3%A9nekesk%C3%B6nyv-21-48/id1661694803");
                     }, 3000);
                 }
             }
             else if (/android/i.test(navigator.userAgent)) {
                 if (!urlParams.get('toStore')) {
-                    window.location.replace(window.location + "&toStore=1");
+                    window.open(window.location + "&toStore=1");
                 } else {
                     document.getElementById('redirect-indicator').style.display = 'block';
                     setTimeout(() => {
-                        window.location.replace("https://play.google.com/store/apps/details?id=com.github.reformatus.enekeskonyv");
+                        window.open("https://play.google.com/store/apps/details?id=com.github.reformatus.enekeskonyv");
                     }, 3000);
                 }
             }
